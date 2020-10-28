@@ -1,10 +1,27 @@
-import Row from "../Row/Row"
-import React, { Component } from 'react';
+import Row from "../Row/Row";
+import React, { Component } from "react";
 
 class Table extends Component {
-// state = {
-//     employees: []
-// }
+  state = {
+    employees: [
+      {
+        firstName: "Bill",
+        lastName: "Murray",
+        image: "http://www.fillmurray.com/50/75",
+        emailAddress: "bill@laughs.com",
+        phoneNumber: "123-867-5309",
+        DOB: "09/21/1950",
+      },
+      {
+        firstName: "William",
+        lastName: "Murray",
+        image: "http://www.fillmurray.com/50/75",
+        emailAddress: "william@laughs.com",
+        phoneNumber: "123-867-5309",
+        DOB: "09/21/1950",
+      },
+    ],
+  };
 
   render() {
     return (
@@ -20,7 +37,9 @@ class Table extends Component {
           </tr>
         </thead>
         <tbody>
-        <Row />
+          {this.state.employees.map((employee) => (
+            <Row employee={employee} />
+          ))}
         </tbody>
       </table>
     );
