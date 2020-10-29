@@ -1,13 +1,23 @@
 import React, { Component } from "react";
 
 class Search extends Component {
+  state = {
+    search: "",
+  };
+
   handleChange = (event) => {
     console.log("Change");
+    const { value, name } = event.target;
+    this.setState({
+      [name]: value,
+    });
+    this.props.handleSearch(event.target.value);
   };
 
   handleSubmit = (event) => {
     event.preventDefault();
     console.log("Submit");
+    this.props.handleSearch(this.state.search);
   };
 
   render() {
