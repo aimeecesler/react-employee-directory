@@ -59,7 +59,7 @@ class Table extends Component {
 
   sortFunction = (category) => 
     (a, b) => 
-      a[category] == b[category] ? 0 : a[category] < b[category] ? -1 : 1;
+      a[category] === b[category] ? 0 : a[category] < b[category] ? -1 : 1;
     ;
   ;
 
