@@ -1,8 +1,8 @@
-import Table from "./components/Table/Table"
+import DirectoryContainer from "./components/DirectoryContainer/DirectoryContainer"
 function App() {
   return (
 <>
-<Table/>
+<DirectoryContainer/>
 </>
   );
 }
