@@ -1,6 +1,7 @@
 import Row from "../Row/Row";
 import React, { Component } from "react";
 import axios from "axios";
+import SortButton from "../SortButton/SortButton"
 
 class Table extends Component {
   state = {
@@ -21,6 +22,28 @@ class Table extends Component {
       //     phoneNumber: "123-867-5309",
       //     DOB: "09/21/1950",
       //   },
+    ],
+    headers: [
+      {
+        text: "First Name",
+        label: "firstName",
+      },
+      {
+        text: "Last Name",
+        label: "lastName",
+      },
+      {
+        text: "Email Address",
+        label: "emailAddress",
+      },
+      {
+        text: "Phone Number",
+        label: "phoneNumber",
+      },
+      {
+        text: "Birth Date",
+        label: "DOB",
+      },
     ],
   };
 
@@ -45,46 +68,9 @@ class Table extends Component {
         <thead>
           <tr>
             <th scope="col"></th>
-            <th scope="col">
-              <button
-                className="btn font-weight-bold"
-                onClick={() => this.handleSort("firstName")}
-              >
-                First Name <i className="fas fa-sort"></i>
-              </button>
-            </th>
-            <th scope="col">
-              <button
-                className="btn font-weight-bold"
-                onClick={() => this.handleSort("lastName")}
-              >
-                Last Name <i className="fas fa-sort"></i>
-              </button>
-            </th>
-            <th scope="col">
-              <button
-                className="btn font-weight-bold"
-                onClick={() => this.handleSort("emailAddress")}
-              >
-                Email Address <i className="fas fa-sort"></i>
-              </button>
-            </th>
-            <th scope="col">
-              <button
-                className="btn font-weight-bold"
-                onClick={() => this.handleSort("phoneNumber")}
-              >
-                Phone Number <i className="fas fa-sort"></i>
-              </button>
-            </th>
-            <th scope="col">
-              <button
-                className="btn font-weight-bold"
-                onClick={() => this.handleSort("DOB")}
-              >
-                Birth Date <i className="fas fa-sort"></i>
-              </button>
-            </th>
+            {this.state.headers.map((header, index) => (
+                <SortButton key={index} text={header.text} label={header.label} handleSort={this.handleSort}/>
+            ))}
           </tr>
         </thead>
         <tbody>
