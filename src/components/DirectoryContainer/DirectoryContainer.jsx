@@ -54,7 +54,11 @@ class DirectoryContainer extends Component {
   }
 
   handleSearch = (searchInput) => {
-    console.log(searchInput);
+    this.setState({
+        employees: this.state.employees.filter((key) => {
+            return key.firstName.includes(searchInput)
+        })
+    })
   };
 
   handleSort = (category) => {
@@ -84,7 +88,7 @@ class DirectoryContainer extends Component {
           <div className="row">
             <div className="col-sm-4"></div>
             <div className="col-sm-4 text-center">
-              <Search handleSearch={this.handleSearch}/>
+              <Search handleSearch={this.handleSearch} categories={this.state.headers}/>
             </div>
           </div>
           <div className="row">

@@ -3,6 +3,7 @@ import React, { Component } from "react";
 class Search extends Component {
   state = {
     search: "",
+    searchCategory: "",
   };
 
   handleChange = (event) => {
@@ -23,6 +24,16 @@ class Search extends Component {
   render() {
     return (
       <form onSubmit={this.handleSubmit}>
+        <div class="form-group">
+          <label for="searchCategory">Choose a Category to Search:</label>
+          <select class="form-control" id="searchCategory">
+            {this.props.categories.map((category, index) => (
+              <option value={category.label} key={index}>
+                {category.text}
+              </option>
+            ))}
+          </select>
+        </div>
         <div className="form-group">
           <input
             name="search"
