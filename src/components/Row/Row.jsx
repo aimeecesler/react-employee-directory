@@ -4,15 +4,15 @@ const Row = (props) => {
     <tr>
       <td>
         <img
-          src={props.employee.picture.thumbnail}
-          alt={`${props.employee.name.first} ${props.employee.name.last}`}
+          src={props.employee.image}
+          alt={`${props.employee.firstName} ${props.employee.lastName}`}
         />
       </td>
-      <td>{props.employee.name.first}</td>
-      <td>{props.employee.name.last}</td>
-      <td>{props.employee.email}</td>
-      <td>{props.employee.phone}</td>
-      <td>{moment(props.employee.dob.date).format("L")}</td>
+      <td>{props.employee.firstName}</td>
+      <td>{props.employee.lastName}</td>
+      <td>{props.employee.emailAddress}</td>
+      <td>{props.employee.phoneNumber}</td>
+      <td>{moment(props.employee.DOB).format("L")}</td>
     </tr>
   );
 };
