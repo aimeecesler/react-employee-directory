@@ -6,6 +6,7 @@ import "./style.css";
 
 class DirectoryContainer extends Component {
   state = {
+    errorMessage: "",
     employees: [],
     headers: [
       {
@@ -53,12 +54,19 @@ class DirectoryContainer extends Component {
       .catch((err) => console.log(err));
   }
 
-  handleSearch = (searchInput) => {
-    this.setState({
-        employees: this.state.employees.filter((key) => {
-            return key.firstName.includes(searchInput)
-        })
-    })
+  searchFunction = (searchInput, searchCategory) => (key) =>
+    key[searchCategory].includes(searchInput);
+
+  handleSearch = (searchInput, searchCategory) => {
+    if (searchCategory === "") {
+      this.setState({ errorMessage: "You must select a category in order to search." });
+    } else {
+      this.setState({
+        employees: this.state.employees.filter(
+          this.searchFunction(searchInput, searchCategory)
+        ),
+      });
+    }
   };
 
   handleSort = (category) => {
@@ -69,6 +77,12 @@ class DirectoryContainer extends Component {
 
   sortFunction = (category) => (a, b) =>
     a[category] === b[category] ? 0 : a[category] < b[category] ? -1 : 1;
+
+  handleModalClose = () => {
+    this.setState({
+      modalShow: false,
+    });
+  };
 
   render() {
     return (
@@ -87,13 +101,17 @@ class DirectoryContainer extends Component {
         <div className="container">
           <div className="row">
             <div className="col-sm-4"></div>
-            <div className="col-sm-4 text-center">
-              <Search handleSearch={this.handleSearch} categories={this.state.headers}/>
+            <div className="col-sm-4">
+              <Search
+                handleSearch={this.handleSearch}
+                categories={this.state.headers}
+                error={this.state.errorMessage}
+              />
             </div>
           </div>
           <div className="row">
             <div className="col-sm-12 text-center">
-              <Table data={this.state} handleSort={this.handleSort}/>
+              <Table data={this.state} handleSort={this.handleSort} />
             </div>
           </div>
         </div>
