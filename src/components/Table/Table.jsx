@@ -28,7 +28,6 @@ class Table extends Component {
     axios
       .get("https://randomuser.me/api/?results=40")
       .then((res) => {
-          console.log(res.data.results)
         this.setState({
             employees: res.data.results
         });
@@ -41,7 +40,7 @@ class Table extends Component {
       <table className="table table-hover">
         <thead>
           <tr>
-            <th scope="col">Image</th>
+            <th scope="col">Image <i className="fas fa-sort-alpha-up"></i></th>
             <th scope="col">First</th>
             <th scope="col">Last</th>
             <th scope="col">Email</th>
@@ -50,8 +49,8 @@ class Table extends Component {
           </tr>
         </thead>
         <tbody>
-          {this.state.employees.map((employee) => (
-            <Row employee={employee} />
+          {this.state.employees.map((employee, index) => (
+            <Row employee={employee} key={index}/>
           ))}
         </tbody>
       </table>

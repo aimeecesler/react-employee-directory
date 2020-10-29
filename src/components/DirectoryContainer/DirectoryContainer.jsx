@@ -7,7 +7,7 @@ const DirectoryContainer = () => {
     <>
       <div className="container-fluid">
         <div className="row">
-          <div className="col-sm-12 text-center">
+          <div className="col-sm-12 text-center my-5">
             <h1>Employee Directory</h1>
             <h3>
               Click on carrots to filter by heading or use the search box to
