@@ -1,12 +1,13 @@
 import React from "react";
 import Search from "../Search/Search";
 import Table from "../Table/Table";
+import "./style.css"
 
 const DirectoryContainer = () => {
   return (
     <>
       <div className="container-fluid">
-        <div className="row">
+        <div className="row main-header mb-5">
           <div className="col-sm-12 text-center my-5">
             <h1>Employee Directory</h1>
             <h3>
