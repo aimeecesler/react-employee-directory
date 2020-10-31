@@ -3,7 +3,7 @@ import Search from "../Search/Search";
 import Table from "../Table/Table";
 // import axios from "axios";
 import "./style.css";
-import employees from "../../employees.json"
+import employees from "../../employees.json";
 
 class DirectoryContainer extends Component {
   state = {
@@ -62,7 +62,10 @@ class DirectoryContainer extends Component {
 
   handleSearch = (searchInput, searchCategory) => {
     if (searchCategory === "") {
-      this.setState({ errorMessage: "You must select a category in order to search.", display: true });
+      this.setState({
+        errorMessage: "You must select a category in order to search.",
+        display: true,
+      });
     } else {
       this.setState({
         display: false,
@@ -82,9 +85,10 @@ class DirectoryContainer extends Component {
   sortFunction = (category) => (a, b) =>
     a[category] === b[category] ? 0 : a[category] < b[category] ? -1 : 1;
 
-  handleModalClose = () => {
+  handleReset = (event) => {
     this.setState({
-      modalShow: false,
+      display: false,
+      employees: employees,
     });
   };
 
@@ -111,6 +115,7 @@ class DirectoryContainer extends Component {
                 categories={this.state.headers}
                 error={this.state.errorMessage}
                 display={this.state.display}
+                handleReset={this.handleReset}
               />
             </div>
           </div>

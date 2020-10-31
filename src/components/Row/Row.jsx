@@ -1,4 +1,3 @@
-import moment from "moment";
 import "./rowStyle.css"
 const Row = (props) => {
   return (
@@ -14,7 +13,7 @@ const Row = (props) => {
       <td>{props.employee.lastName}</td>
       <td>{props.employee.emailAddress}</td>
       <td>{props.employee.phoneNumber}</td>
-      <td>{moment(props.employee.DOB).format("L")}</td>
+      <td>{props.employee.DOB}</td>
     </tr>
   );
 };
