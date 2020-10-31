@@ -22,7 +22,7 @@ class Search extends Component {
   };
 
   selectCategory = (event) => {
-    this.setState({searchCategory: event.target.value})  
+    this.setState({ searchCategory: event.target.value });
   };
 
   render() {
@@ -53,7 +53,22 @@ class Search extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-            <div className="alert alert-danger" role="alert" style={{ opacity: this.props.display ? 1 : 0 }}>{this.props.error}</div>
+        <div className="text-center mb-2">
+          <button type="submit" className="btn btn-primary mr-1">
+            Submit
+          </button>
+          <button type="button" class="btn btn-danger ml-1">
+            Reset
+          </button>
+        </div>
+
+        <div
+          className="alert alert-danger"
+          role="alert"
+          style={{ opacity: this.props.display ? 1 : 0 }}
+        >
+          {this.props.error}
+        </div>
       </form>
     );
   }
