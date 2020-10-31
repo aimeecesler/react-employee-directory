@@ -6,6 +6,8 @@ class Search extends Component {
     searchCategory: "",
   };
 
+  // handles any change in the input field, updates the local search states
+  // calls the handleSearch function which updates the main employees state
   handleInputChange = (event) => {
     const { value, name } = event.target;
     this.setState({
@@ -14,20 +16,25 @@ class Search extends Component {
     this.props.handleSearch(event.target.value, this.state.searchCategory);
   };
 
+  // handles a full submit on the form if the user clicks the submit button or enter on their keyboard
+  // this really only comes into play if the user copy/pastes something in the input, otherwise it live searches as they type
   handleSubmit = (event) => {
     event.preventDefault();
     this.props.handleSearch(this.state.search, this.state.searchCategory);
   };
 
+  // updates the local category if the dropdown selection is changed
   selectCategory = (event) => {
     this.setState({ searchCategory: event.target.value });
   };
 
+  // resets the form and calls the handleReset function if the rest button is clicked
   handleResetClick = (event) => {
     document.getElementById("search-form").reset();
     this.props.handleReset();
   };
 
+  // renders the search form and the error alert
   render() {
     return (
       <form id="search-form" onSubmit={this.handleSubmit}>

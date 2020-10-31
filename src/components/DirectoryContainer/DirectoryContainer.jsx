@@ -62,10 +62,13 @@ class DirectoryContainer extends Component {
   //     .catch((err) => console.log(err));
   // }
 
+  // function to check if a field includes the searched parameters
   searchFunction = (searchInput, searchCategory) => (key) =>
     key[searchCategory].includes(searchInput);
 
+  // sets the state when the input field is changed
   handleSearch = (searchInput, searchCategory) => {
+    // error message if a category is not selected
     if (searchCategory === "") {
       this.setState({
         errorMessage: "You must select a category in order to search.",
@@ -81,6 +84,8 @@ class DirectoryContainer extends Component {
     }
   };
 
+  // sorts and sets the state when a column is selected for sorting
+  // sets the sortOrder item for the category so that the next button click will yield the reverse order
   handleSort = (category, order, index) => {
     if (order === "asc") {
       let newHeaders = [...this.state.headers];
@@ -91,7 +96,6 @@ class DirectoryContainer extends Component {
         employees: this.state.employees.sort(this.ascSortFunction(category)),
         headers: newHeaders,
       });
-      // console.log(this.state.headers[index]);
     } else if (order === "desc") {
       let newHeaders = [...this.state.headers];
       let selectedHeader = { ...newHeaders[index] };
@@ -104,12 +108,15 @@ class DirectoryContainer extends Component {
     }
   };
 
+  // function to actually sort the data in ascending order
   ascSortFunction = (category) => (a, b) =>
     a[category] === b[category] ? 0 : a[category] < b[category] ? -1 : 1;
 
+  // function to actually sort the data in descending order
   descSortFunction = (category) => (a, b) =>
     a[category] === b[category] ? 0 : a[category] < b[category] ? 1 : -1;
 
+  // updates state when the reset button is clicked, hides the error message and sets employees back to the original list
   handleReset = (event) => {
     this.setState({
       display: false,
@@ -117,6 +124,7 @@ class DirectoryContainer extends Component {
     });
   };
 
+  // render page content
   render() {
     return (
       <>

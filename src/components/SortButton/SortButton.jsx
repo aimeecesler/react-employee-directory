@@ -1,5 +1,6 @@
 import React from 'react';
 
+// renders the headers of the table as buttons the user can click to sort
 const SortButton = (props) => {
     return (
         <th scope="col">

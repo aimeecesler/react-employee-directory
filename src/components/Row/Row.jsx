@@ -1,5 +1,7 @@
 import moment from "moment";
 import "./rowStyle.css"
+
+// renders each row in the table
 const Row = (props) => {
   return (
     <tr>
