@@ -2,7 +2,7 @@
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-ENTER CONTENT
+The purpose of this application is to allow a user to search and filter a table of employees.
 
 ![Main]()
 
@@ -39,7 +39,9 @@ Edit using VSCode after [installation](#installation). This is a React.js applic
 
 ## Building the Application
 
-ENTER CONTENT
+While building this application, I chose to use the table fields image, first name, last name, email, phone number, and birth date. Upon page load, the user will see a table displaying the full list of 20 employees stored in the employees.json file. I did also include an option (commented out in the code) to utilize a random person API call, however I found the data from that API to be very inconsistent especially in the formatting of phone number and birth date as well as the language of the content.
+
+Once the page is loaded, the user can then chose to sort the data by the first name, last name, email, phone number, or birth date columns by clicking on the column header to sort. The user can also search through each of these categories by selecting a category from the dropdown and typing in the query they would like to search. This form does have validation to throw an alert if the category has not been selected. If the user wishes to return to the full list of employees after a search, they simply have to click the "Reset" button to do so.
 
 ---
 
