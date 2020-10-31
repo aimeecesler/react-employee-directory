@@ -3,11 +3,12 @@ import Search from "../Search/Search";
 import Table from "../Table/Table";
 import axios from "axios";
 import "./style.css";
+import employees from "../../employees.json"
 
 class DirectoryContainer extends Component {
   state = {
     errorMessage: "",
-    employees: [],
+    employees: employees,
     headers: [
       {
         text: "First Name",
@@ -32,27 +33,28 @@ class DirectoryContainer extends Component {
     ],
   };
 
-  componentDidMount() {
-    axios
-      .get("https://randomuser.me/api/?results=40")
-      .then((res) => {
-        const employeeArray = [];
-        res.data.results.map((employee) => {
-          return employeeArray.push({
-            firstName: employee.name.first,
-            lastName: employee.name.last,
-            image: employee.picture.thumbnail,
-            emailAddress: employee.email,
-            phoneNumber: employee.phone,
-            DOB: employee.dob.date,
-          });
-        });
-        this.setState({
-          employees: employeeArray,
-        });
-      })
-      .catch((err) => console.log(err));
-  }
+  // ALTERNATIVE API CALL TO USE INSTEAD OF EMPLOYEES.JSON
+  // componentDidMount() {
+  //   axios
+  //     .get("https://randomuser.me/api/?results=40")
+  //     .then((res) => {
+  //       const employeeArray = [];
+  //       res.data.results.map((employee) => {
+  //         return employeeArray.push({
+  //           firstName: employee.name.first,
+  //           lastName: employee.name.last,
+  //           image: employee.picture.thumbnail,
+  //           emailAddress: employee.email,
+  //           phoneNumber: employee.phone,
+  //           DOB: employee.dob.date,
+  //         });
+  //       });
+  //       this.setState({
+  //         employees: employeeArray,
+  //       });
+  //     })
+  //     .catch((err) => console.log(err));
+  // }
 
   searchFunction = (searchInput, searchCategory) => (key) =>
     key[searchCategory].includes(searchInput);

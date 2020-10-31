@@ -1,9 +1,11 @@
 import moment from "moment";
+import "./rowStyle.css"
 const Row = (props) => {
   return (
     <tr>
       <td>
         <img
+          className="profile-image"
           src={props.employee.image}
           alt={`${props.employee.firstName} ${props.employee.lastName}`}
         />
