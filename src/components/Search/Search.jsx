@@ -39,7 +39,7 @@ class Search extends Component {
             onChange={this.selectCategory}
             value={this.state.searchCategory}
           >
-            <option value="" selected disabled>Choose a Category to Search</option>
+            <option value="">Choose a Category to Search</option>
             {this.props.categories.map((category, index) => (
               <option value={category.label} key={index}>
                 {category.text}

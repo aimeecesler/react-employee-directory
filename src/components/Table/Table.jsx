@@ -11,8 +11,8 @@ const Table = (props) => {
           {props.data.headers.map((header, index) => (
             <SortButton
               key={index}
-              text={header.text}
-              label={header.label}
+              data={header}
+              id={index}
               handleSort={props.handleSort}
             />
           ))}

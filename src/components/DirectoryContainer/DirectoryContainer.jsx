@@ -14,22 +14,27 @@ class DirectoryContainer extends Component {
       {
         text: "First Name",
         label: "firstName",
+        sortOrder: "asc",
       },
       {
         text: "Last Name",
         label: "lastName",
+        sortOrder: "asc",
       },
       {
         text: "Email Address",
         label: "emailAddress",
+        sortOrder: "asc",
       },
       {
         text: "Phone Number",
         label: "phoneNumber",
+        sortOrder: "asc",
       },
       {
         text: "Birth Date",
         label: "DOB",
+        sortOrder: "asc",
       },
     ],
   };
@@ -76,14 +81,34 @@ class DirectoryContainer extends Component {
     }
   };
 
-  handleSort = (category) => {
-    this.setState({
-      employees: this.state.employees.sort(this.sortFunction(category)),
-    });
+  handleSort = (category, order, index) => {
+    if (order === "asc") {
+      let newHeaders = [...this.state.headers];
+      let selectedHeader = { ...newHeaders[index] };
+      selectedHeader.sortOrder = "desc";
+      newHeaders[index] = selectedHeader;
+      this.setState({
+        employees: this.state.employees.sort(this.ascSortFunction(category)),
+        headers: newHeaders,
+      });
+      // console.log(this.state.headers[index]);
+    } else if (order === "desc") {
+      let newHeaders = [...this.state.headers];
+      let selectedHeader = { ...newHeaders[index] };
+      selectedHeader.sortOrder = "asc";
+      newHeaders[index] = selectedHeader;
+      this.setState({
+        employees: this.state.employees.sort(this.descSortFunction(category)),
+        headers: newHeaders,
+      });
+    }
   };
 
-  sortFunction = (category) => (a, b) =>
+  ascSortFunction = (category) => (a, b) =>
     a[category] === b[category] ? 0 : a[category] < b[category] ? -1 : 1;
+
+  descSortFunction = (category) => (a, b) =>
+    a[category] === b[category] ? 0 : a[category] < b[category] ? 1 : -1;
 
   handleReset = (event) => {
     this.setState({
@@ -98,7 +123,9 @@ class DirectoryContainer extends Component {
         <div className="container-fluid">
           <div className="row main-header mb-5">
             <div className="col-sm-12 my-auto">
-              <h1 className="ml-3" id="banner-header">Employee Directory</h1>
+              <h1 className="ml-3" id="banner-header">
+                Employee Directory
+              </h1>
             </div>
           </div>
         </div>
