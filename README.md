@@ -4,7 +4,7 @@
 
 The purpose of this application is to allow a user to search and filter a table of employees.
 
-![Main]()
+![Main](readmeimg.PNG)
 
 ---
 
