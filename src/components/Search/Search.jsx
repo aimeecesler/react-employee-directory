@@ -53,7 +53,7 @@ class Search extends Component {
             onChange={this.handleInputChange}
           />
         </div>
-            <p className="text-danger">{this.props.error}</p>
+            <div className="alert alert-danger" role="alert" style={{ opacity: this.props.display ? 1 : 0 }}>{this.props.error}</div>
       </form>
     );
   }

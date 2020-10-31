@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Search from "../Search/Search";
 import Table from "../Table/Table";
-import axios from "axios";
+// import axios from "axios";
 import "./style.css";
 import employees from "../../employees.json"
 
@@ -9,6 +9,7 @@ class DirectoryContainer extends Component {
   state = {
     errorMessage: "",
     employees: employees,
+    display: false,
     headers: [
       {
         text: "First Name",
@@ -61,9 +62,10 @@ class DirectoryContainer extends Component {
 
   handleSearch = (searchInput, searchCategory) => {
     if (searchCategory === "") {
-      this.setState({ errorMessage: "You must select a category in order to search." });
+      this.setState({ errorMessage: "You must select a category in order to search.", display: true });
     } else {
       this.setState({
+        display: false,
         employees: this.state.employees.filter(
           this.searchFunction(searchInput, searchCategory)
         ),
@@ -108,6 +110,7 @@ class DirectoryContainer extends Component {
                 handleSearch={this.handleSearch}
                 categories={this.state.headers}
                 error={this.state.errorMessage}
+                display={this.state.display}
               />
             </div>
           </div>
