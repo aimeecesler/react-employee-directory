@@ -30,7 +30,7 @@ class Search extends Component {
 
   // resets the form and calls the handleReset function if the rest button is clicked
   handleResetClick = (event) => {
-    document.getElementById("search-form").reset();
+    this.setState({search:"", searchCategory: ""})
     this.props.handleReset();
   };
 
